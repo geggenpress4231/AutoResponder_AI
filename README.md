@@ -1,4 +1,4 @@
-# Full Stack React Application
+# AutoResponder AI
 
 ## Description
 
