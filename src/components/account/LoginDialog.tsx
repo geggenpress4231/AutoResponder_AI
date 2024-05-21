@@ -2,6 +2,7 @@ import React from 'react';
 import { Dialog,Box,Typography,List,ListItem,styled} from '@mui/material';
 import { qrCodeImage } from '../../constants/data';
 import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 const dialogStyle={
     height:'96%',
     marginTop:'12%',
@@ -44,7 +45,8 @@ const StyledList=styled(List)`
 const LoginDialog: React.FC = () => {
 
     const onLoginSuccess=(res:any)=>{
-        console.log(res)
+        const decoded=jwtDecode(res.credential)
+        console.log(decoded)
 
     }
     const onLoginError=()=>{
@@ -53,7 +55,8 @@ const LoginDialog: React.FC = () => {
 
     return (
         <Dialog open={true}
-        PaperProps={{sx:dialogStyle}}>
+        PaperProps={{sx:dialogStyle}}
+        hideBackdrop={true}>
             <Component>
                 <Container>
                     <Title>To Use this on Computer:</Title>
