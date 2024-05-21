@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginDialog from './account/LoginDialog';
 import { AppBar,Toolbar,styled,Box } from '@mui/material';
+import ChatDialog from './chat/chatDialog';
 
 const Component=styled(Box)`
 height:100vh;
