@@ -2,7 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, styled } from '@mui/material';
 import { RootState } from '../../../redux/store'; 
-import { Chat as MessageIcon} from '@mui/icons-material'
+import { Chat as MessageIcon,MoreVert} from '@mui/icons-material'
+
 
 const Component = styled(Box)`
     height: 44px;
@@ -43,6 +44,8 @@ const Header: React.FC = () => {
       <Image src={user.picture} alt="User" />
       <Wrapper>
                     <MessageIcon />
+                    <MoreVert/>
+                    
                     
                 </Wrapper>
     </Component>
