@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Box, styled } from '@mui/material';
-import { RootState } from '../../../redux/store'; // Adjust the path as needed
+import { RootState } from '../../../redux/store'; 
+import { Chat as MessageIcon} from '@mui/icons-material'
 
 const Component = styled(Box)`
     height: 44px;
@@ -16,6 +17,20 @@ const Image = styled('img') ({
     borderRadius: '50%'
 })
 
+const Wrapper = styled(Box) `
+    margin-left: auto;
+    & > * {
+        margin-left: 2px;
+        padding: 8px;
+        color: #000;
+    };
+    & :first-child {
+        font-size: 22px;
+        margin-right: 8px;
+        margin-top: 3px;
+    }
+`;
+
 const Header: React.FC = () => {
   const user = useSelector((state: RootState) => state.auth.user);
 
@@ -26,7 +41,12 @@ const Header: React.FC = () => {
   return (
     <Component>
       <Image src={user.picture} alt="User" />
+      <Wrapper>
+                    <MessageIcon />
+                    
+                </Wrapper>
     </Component>
+    
   );
 };
 
