@@ -1,9 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Box, styled } from '@mui/material';
+import { Box, styled, IconButton } from '@mui/material';
 import { RootState } from '../../../redux/store'; 
-import { Chat as MessageIcon,MoreVert} from '@mui/icons-material'
-
+import { Chat as MessageIcon } from '@mui/icons-material';
+import HeaderMenu from './HeaderMenu';
 
 const Component = styled(Box)`
     height: 44px;
@@ -12,17 +12,19 @@ const Component = styled(Box)`
     padding: 8px 16px;
     align-items: center;
 `;
-const Image = styled('img') ({
+
+const Image = styled('img')({
     height: 40,
     width: 40,
-    borderRadius: '50%'
-})
+    borderRadius: '50%',
+});
 
-const Wrapper = styled(Box) `
+const Wrapper = styled(Box)`
     margin-left: auto;
+    display: flex;
+    align-items: center;
     & > * {
         margin-left: 2px;
-        padding: 8px;
         color: #000;
     };
     & :first-child {
@@ -33,24 +35,23 @@ const Wrapper = styled(Box) `
 `;
 
 const Header: React.FC = () => {
-  const user = useSelector((state: RootState) => state.auth.user);
+    const user = useSelector((state: RootState) => state.auth.user);
 
-  if (!user) {
-    return null;
-  }
+    if (!user) {
+        return null;
+    }
 
-  return (
-    <Component>
-      <Image src={user.picture} alt="User" />
-      <Wrapper>
+    return (
+        <Component>
+            <Image src={user.picture} alt="User" />
+            <Wrapper>
+                <IconButton>
                     <MessageIcon />
-                    <MoreVert/>
-                    
-                    
-                </Wrapper>
-    </Component>
-    
-  );
+                </IconButton>
+                <HeaderMenu />
+            </Wrapper>
+        </Component>
+    );
 };
 
 export default Header;
