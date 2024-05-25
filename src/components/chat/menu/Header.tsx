@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Box, styled, IconButton } from '@mui/material';
-import { RootState } from '../../../redux/store'; 
+import { RootState } from '../../../redux/store';
 import { Chat as MessageIcon } from '@mui/icons-material';
 import HeaderMenu from './HeaderMenu';
+import InfoDrawer from '../../drawer/InfoDrawer';
 
 const Component = styled(Box)`
     height: 44px;
@@ -36,21 +37,30 @@ const Wrapper = styled(Box)`
 
 const Header: React.FC = () => {
     const user = useSelector((state: RootState) => state.auth.user);
+    const [openDrawer, setOpenDrawer] = useState(false);
 
+    const toggleDrawer = () => {
+        setOpenDrawer(true);
+    };
+
+    // Ensure hooks are called at the top level
     if (!user) {
         return null;
     }
 
     return (
-        <Component>
-            <Image src={user.picture} alt="User" />
-            <Wrapper>
-                <IconButton>
-                    <MessageIcon />
-                </IconButton>
-                <HeaderMenu />
-            </Wrapper>
-        </Component>
+        <>
+            <Component>
+                <Image src={user.picture} alt="User" onClick={toggleDrawer} />
+                <Wrapper>
+                    <IconButton>
+                        <MessageIcon />
+                    </IconButton>
+                    <HeaderMenu />
+                </Wrapper>
+            </Component>
+            <InfoDrawer open={openDrawer} setOpen={setOpenDrawer} />
+        </>
     );
 };
 
