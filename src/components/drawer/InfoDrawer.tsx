@@ -1,5 +1,6 @@
 import React from 'react';
-import { Drawer } from '@mui/material';
+import { Drawer,Box } from '@mui/material';
+import { ArrowBack } from '@mui/icons-material';
 
 interface InfoDrawerProps {
     open: boolean;
@@ -26,7 +27,9 @@ const InfoDrawer: React.FC<InfoDrawerProps> = ({ open, setOpen }) => {
         PaperProps={{ sx: drawerStyle }}
         style={{ zIndex: 1500 }}
         >
-            {/* Add your drawer content here */}
+            <Box>
+                <ArrowBack onClick={()=>setOpen(false)}/>
+            </Box>
         </Drawer>
     );
 };
