@@ -47,7 +47,6 @@ const Header: React.FC = () => {
     if (!user) {
         return null;
     }
-
     return (
         <>
             <Component>
@@ -59,7 +58,7 @@ const Header: React.FC = () => {
                     <HeaderMenu />
                 </Wrapper>
             </Component>
-            <InfoDrawer open={openDrawer} setOpen={setOpenDrawer} />
+            <InfoDrawer open={openDrawer} setOpen={setOpenDrawer} profile={true} />
         </>
     );
 };
