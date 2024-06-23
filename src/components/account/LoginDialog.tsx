@@ -2,7 +2,7 @@ import React from 'react';
 import { Dialog, Box, Typography, List, ListItem, styled } from '@mui/material';
 import { qrCodeImage } from '../../constants/data';
 import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode'; // Correctly import jwtDecode as a named import
+import { jwtDecode } from 'jwt-decode'; 
 import { useDispatch } from 'react-redux';
 import { loginSuccess } from '../../redux/authSlice';
 import { addUser } from '../../service/api';
@@ -52,7 +52,7 @@ const LoginDialog: React.FC = () => {
   const dispatch = useDispatch();
 
   const onLoginSuccess = async (res: any) => {
-    const decoded = jwtDecode(res.credential); // Use jwtDecode correctly
+    const decoded = jwtDecode(res.credential); 
     dispatch(loginSuccess(decoded));
     await addUser(decoded)
   };
